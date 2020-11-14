@@ -15,13 +15,14 @@ app = Flask(__name__)
 CORS(app)
 
 # Provide Mongo Atlas URI, stored in config file
-app.config["MONGO_URI"] = os.getenv("MONGO_URI_MASTER")
+app.config["MONGO_URI"] = os.getenv("MONGO_URI_WORKSHOP")
 # Set custom JSON Encoder for Mongo Object
 app.json_encoder = util.MongoEncoder
 db.mongo.init_app(app)
 api = Api(app)
 
 api.add_resource(User, "/user")
+api.add_resource(Stock, "/stock")
 
 
 # Vanilla Flask route
